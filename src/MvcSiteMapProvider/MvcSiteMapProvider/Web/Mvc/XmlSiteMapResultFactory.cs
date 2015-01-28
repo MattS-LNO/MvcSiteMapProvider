@@ -37,9 +37,10 @@ namespace MvcSiteMapProvider.Web.Mvc
 
         #region IXmlSiteMapResultFactory Members
 
-        public virtual ActionResult Create(int page)
+        public virtual ActionResult Create(SiteMapType type, int page)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 this.DefaultRootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -50,9 +51,10 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.cultureContextFactory);
         }
 
-        public virtual ActionResult Create(int page, string siteMapUrlTemplate)
+        public virtual ActionResult Create(SiteMapType type, int page, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 this.DefaultRootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -62,10 +64,11 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.urlPath,
                 this.cultureContextFactory);
         }
-        
-        public virtual ActionResult Create(int page, IEnumerable<string> siteMapCacheKeys)
+
+        public virtual ActionResult Create(SiteMapType type, int page, IEnumerable<string> siteMapCacheKeys)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 this.DefaultRootNode,
                 siteMapCacheKeys,
@@ -76,9 +79,10 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.cultureContextFactory);
         }
 
-        public virtual ActionResult Create(int page, IEnumerable<string> siteMapCacheKeys, string siteMapUrlTemplate)
+        public virtual ActionResult Create(SiteMapType type, int page, IEnumerable<string> siteMapCacheKeys, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 this.DefaultRootNode,
                 siteMapCacheKeys,
@@ -89,9 +93,10 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.cultureContextFactory);
         }
 
-        public virtual ActionResult Create(int page, IEnumerable<string> siteMapCacheKeys, string baseUrl, string siteMapUrlTemplate)
+        public virtual ActionResult Create(SiteMapType type, int page, IEnumerable<string> siteMapCacheKeys, string baseUrl, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 this.DefaultRootNode,
                 siteMapCacheKeys,
@@ -102,9 +107,10 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.cultureContextFactory);
         }
 
-        public virtual ActionResult Create(int page, ISiteMapNode rootNode)
+        public virtual ActionResult Create(SiteMapType type, int page, ISiteMapNode rootNode)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 rootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -115,9 +121,10 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.cultureContextFactory);
         }
 
-        public virtual ActionResult Create(int page, ISiteMapNode rootNode, string siteMapUrlTemplate)
+        public virtual ActionResult Create(SiteMapType type, int page, ISiteMapNode rootNode, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 rootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -128,9 +135,10 @@ namespace MvcSiteMapProvider.Web.Mvc
                 this.cultureContextFactory);
         }
 
-        public virtual ActionResult Create(int page, ISiteMapNode rootNode, string baseUrl, string siteMapUrlTemplate)
+        public virtual ActionResult Create(SiteMapType type, int page, ISiteMapNode rootNode, string baseUrl, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                type,
                 page,
                 rootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -145,6 +153,7 @@ namespace MvcSiteMapProvider.Web.Mvc
         public virtual ActionResult Create()
         {
             return new XmlSiteMapResult(
+                SiteMapType.All,
                 this.DefaultPage,
                 this.DefaultRootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -159,6 +168,7 @@ namespace MvcSiteMapProvider.Web.Mvc
         public virtual ActionResult Create(IEnumerable<string> siteMapCacheKeys)
         {
             return new XmlSiteMapResult(
+                SiteMapType.All,
                 this.DefaultPage,
                 this.DefaultRootNode,
                 siteMapCacheKeys,
@@ -173,6 +183,7 @@ namespace MvcSiteMapProvider.Web.Mvc
         public virtual ActionResult Create(IEnumerable<string> siteMapCacheKeys, string baseUrl, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                SiteMapType.All,
                 this.DefaultPage,
                 this.DefaultRootNode,
                 siteMapCacheKeys,
@@ -187,6 +198,7 @@ namespace MvcSiteMapProvider.Web.Mvc
         public virtual ActionResult Create(ISiteMapNode rootNode)
         {
             return new XmlSiteMapResult(
+                SiteMapType.All,
                 this.DefaultPage,
                 rootNode,
                 this.DefaultSiteMapCacheKeys,
@@ -201,6 +213,7 @@ namespace MvcSiteMapProvider.Web.Mvc
         public virtual ActionResult Create(ISiteMapNode rootNode, string baseUrl, string siteMapUrlTemplate)
         {
             return new XmlSiteMapResult(
+                SiteMapType.All,
                 this.DefaultPage,
                 rootNode,
                 this.DefaultSiteMapCacheKeys,

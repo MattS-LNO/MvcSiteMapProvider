@@ -47,6 +47,23 @@ namespace MvcSiteMapProvider
         ChangeFrequency ChangeFrequency { get; set; }
         UpdatePriority UpdatePriority { get; set; }
 
+        DateTime ExpirationDate { get; set; }
+        bool IsVideo { get; set; }
+        string ContentLocationUrl { get; set; }
+        string PlayerLocationUrl { get; set; }
+        bool PlayerAllowEmbed { get; set; }
+        bool PlayerAutoplay { get; set; }
+        int VideoDuration { get; set; }
+        int ViewCount { get; set; }
+        double VideoRating { get; set; }
+        bool FamilyFriendly { get; set; }
+        string GalleryLocation { get; set; }
+        string GalleryTitle { get; set; }
+        bool RequiresSubscription { get; set; }
+        string VideoUploader { get; set; }
+        string VideoUploaderUrl { get; set; }
+        bool VideoLive { get; set; }
+
         string VisibilityProvider { get; set; }
         bool IsVisible(IDictionary<string, object> sourceMetadata);
 
@@ -69,6 +86,7 @@ namespace MvcSiteMapProvider
 
         string CanonicalKey { get; set; }
         string CanonicalUrl { get; set; }
+        string CanonicalUrlSeo { get; set; }
         string CanonicalUrlProtocol { get; set; }
         string CanonicalUrlHostName { get; set; }
 

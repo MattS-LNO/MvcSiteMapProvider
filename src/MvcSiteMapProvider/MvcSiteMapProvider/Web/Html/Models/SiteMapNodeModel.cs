@@ -52,7 +52,9 @@ namespace MvcSiteMapProvider.Web.Html.Models
             TargetFrame = node.TargetFrame;
             ImageUrl = node.ImageUrl;
             Url = node.Url;
+            ResolvedUrl = node.ResolvedUrl;
             CanonicalUrl = node.CanonicalUrl;
+            CanonicalUrlSeo = node.CanonicalUrlSeo;
             MetaRobotsContent = node.GetMetaRobotsContentString();
             IsCurrentNode = (node.Equals(node.SiteMap.CurrentNode));
             IsInCurrentPath = node.IsInCurrentPath();
@@ -103,10 +105,22 @@ namespace MvcSiteMapProvider.Web.Html.Models
         public string Url { get; protected set; }
 
         /// <summary>
+        /// Gets or sets the URL.
+        /// </summary>
+        /// <value>The URL.</value>
+        public string ResolvedUrl { get; protected set; }
+
+        /// <summary>
         /// Gets or sets the canonical URL.
         /// </summary>
         /// <value>The canonical URL.</value>
         public string CanonicalUrl { get; protected set; }
+
+        /// <summary>
+        /// Gets or sets the canonical URL for SEO.
+        /// </summary>
+        /// <value>The canonical URL.</value>
+        public string CanonicalUrlSeo { get; protected set; }
 
         /// <summary>
         /// Gets or sets the content value of the meta robots tag.

@@ -5,3 +5,7 @@
 @if (!string.IsNullOrEmpty(Model.CurrentNode.CanonicalUrl)) {
     <link rel="canonical" href="@Model.CurrentNode.CanonicalUrl" />
 }
+@if (string.IsNullOrEmpty(Model.CurrentNode.CanonicalUrl) && !string.IsNullOrEmpty(Model.CurrentNode.CanonicalUrlSeo))
+{
+    <link rel="canonical" href="@Model.CurrentNode.CanonicalUrlSeo" />
+}

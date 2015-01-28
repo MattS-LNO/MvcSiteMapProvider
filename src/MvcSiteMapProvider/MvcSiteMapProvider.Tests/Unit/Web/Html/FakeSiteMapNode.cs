@@ -196,9 +196,28 @@ namespace MvcSiteMapProvider.Tests.Unit.Web.Html
 
         public DateTime LastModifiedDate { get; set; }
 
+        public DateTime ExpirationDate { get; set; }
+
         public ChangeFrequency ChangeFrequency { get; set; }
 
         public UpdatePriority UpdatePriority { get; set; }
+
+        public bool IsVideo { get; set; }
+        public string ContentLocationUrl { get; set; }
+        public string PlayerLocationUrl { get; set; }
+        public bool PlayerAllowEmbed { get; set; }
+        public bool PlayerAutoplay { get; set; }
+        public int VideoDuration { get; set; }
+        public int ViewCount { get; set; }
+        public double VideoRating { get; set; }
+        public bool FamilyFriendly { get; set; }
+        public string GalleryLocation { get; set; }
+        public string GalleryTitle { get; set; }
+        public bool RequiresSubscription { get; set; }
+        public string VideoUploader { get; set; }
+        public string VideoUploaderUrl { get; set; }
+        public bool VideoLive { get; set; }
+
 
         public string VisibilityProvider { get; set; }
 
@@ -271,6 +290,8 @@ namespace MvcSiteMapProvider.Tests.Unit.Web.Html
         public string CanonicalKey { get; set; }
 
         public string CanonicalUrl { get; set; }
+
+        public string CanonicalUrlSeo { get; set; }
 
         public string CanonicalUrlProtocol { get; set; }
 

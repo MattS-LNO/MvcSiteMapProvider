@@ -59,6 +59,22 @@ namespace MvcSiteMapProvider
         public abstract DateTime LastModifiedDate { get; set; }
         public abstract ChangeFrequency ChangeFrequency { get; set; }
         public abstract UpdatePriority UpdatePriority { get; set; }
+        public abstract DateTime ExpirationDate { get; set; }
+        public abstract bool IsVideo { get; set; }
+        public abstract string ContentLocationUrl { get; set; }
+        public abstract string PlayerLocationUrl { get; set; }
+        public abstract bool PlayerAllowEmbed { get; set; }
+        public abstract bool PlayerAutoplay { get; set; }
+        public abstract int VideoDuration { get; set; }
+        public abstract int ViewCount { get; set; }
+        public abstract double VideoRating { get; set; }
+        public abstract bool FamilyFriendly { get; set; }
+        public abstract string GalleryLocation { get; set; }
+        public abstract string GalleryTitle { get; set; }
+        public abstract bool RequiresSubscription { get; set; }
+        public abstract string VideoUploader { get; set; }
+        public abstract string VideoUploaderUrl { get; set; }
+        public abstract bool VideoLive { get; set; }
         public abstract string VisibilityProvider { get; set; }
         public abstract bool IsVisible(IDictionary<string, object> sourceMetadata);
         public abstract string DynamicNodeProvider { get; set; }
@@ -78,6 +94,7 @@ namespace MvcSiteMapProvider
         public abstract bool HasExternalUrl(HttpContextBase httpContext);
         public abstract string CanonicalKey { get; set; }
         public abstract string CanonicalUrl { get; set; }
+        public abstract string CanonicalUrlSeo { get; set; }
         public abstract string CanonicalUrlProtocol { get; set; }
         public abstract string CanonicalUrlHostName { get; set; }
         public abstract IMetaRobotsValueCollection MetaRobotsValues { get; }

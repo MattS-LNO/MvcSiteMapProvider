@@ -94,6 +94,28 @@ namespace MvcSiteMapProvider
         /// <value>A string representation of the last modified date. May be any date format that is supported by the invariant culture.</value>
         string LastModifiedDate { get; set; }
 
+        string ExpirationDate { get; set; }
+
+
+
+        bool IsVideo { get; set; }
+        string ContentLocationUrl { get; set; }
+        string PlayerLocationUrl { get; set; }
+        bool PlayerAllowEmbed { get; set; }
+        bool PlayerAutoplay { get; set; }
+        int VideoDuration { get; set; }
+        int ViewCount { get; set; }
+        double VideoRating { get; set; }
+        bool FamilyFriendly { get; set; }
+        string GalleryLocation { get; set; }
+        string GalleryTitle { get; set; }
+        bool RequiresSubscription { get; set; }
+        string VideoUploader { get; set; }
+        string VideoUploaderUrl { get; set; }
+        bool VideoLive { get; set; }
+
+
+
         /// <summary>
         /// Gets or sets the change frequency.
         /// </summary>
@@ -169,6 +191,12 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <remarks>May not be used in conjunction with CanonicalKey. Only 1 canonical value is allowed.</remarks>
         string CanonicalUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the canonical URL for SEO.
+        /// </summary>
+        /// <remarks>Uses the URL value.</remarks>
+        string CanonicalUrlSeo { get; set; }
 
         /// <summary>
         /// Gets or sets the protocol that will be used when resolving the canonical URL.

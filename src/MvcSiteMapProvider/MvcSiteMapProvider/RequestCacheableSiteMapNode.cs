@@ -149,6 +149,12 @@ namespace MvcSiteMapProvider
             set { this.SetCachedOrMemberValue<string>(x => base.CanonicalUrl = x, "CanonicalUrl", value); }
         }
 
+        public override string CanonicalUrlSeo
+        {
+            get { return this.GetCachedOrMemberValue<string>(() => base.CanonicalUrlSeo, "CanonicalUrlSeo", false); }
+            set { this.SetCachedOrMemberValue<string>(x => base.CanonicalUrlSeo = x, "CanonicalUrlSeo", value); }
+        }
+
         public override string CanonicalUrlProtocol
         {
             get { return this.GetCachedOrMemberValue<string>(() => base.CanonicalUrlProtocol, "CanonicalUrlProtocol", false); }

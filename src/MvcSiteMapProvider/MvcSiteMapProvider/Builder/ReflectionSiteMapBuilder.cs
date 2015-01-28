@@ -458,13 +458,31 @@ namespace MvcSiteMapProvider.Builder
             siteMapNode.HostName = attribute.HostName;
             siteMapNode.CanonicalKey = attribute.CanonicalKey;
             siteMapNode.CanonicalUrl = attribute.CanonicalUrl;
+            siteMapNode.CanonicalUrlSeo = attribute.CanonicalUrlSeo;
             siteMapNode.CanonicalUrlProtocol = attribute.CanonicalUrlProtocol;
             siteMapNode.CanonicalUrlHostName = attribute.CanonicalUrlHostName;
             siteMapNode.MetaRobotsValues.AddRange(attribute.MetaRobotsValues);
             siteMapNode.LastModifiedDate = string.IsNullOrEmpty(attribute.LastModifiedDate) ? DateTime.MinValue : DateTime.Parse(attribute.LastModifiedDate, CultureInfo.InvariantCulture);
+            siteMapNode.ExpirationDate = string.IsNullOrEmpty(attribute.ExpirationDate) ? DateTime.Today.AddYears(2) : DateTime.Parse(attribute.ExpirationDate, CultureInfo.InvariantCulture);
             siteMapNode.ChangeFrequency = attribute.ChangeFrequency;
             siteMapNode.UpdatePriority = attribute.UpdatePriority;
             siteMapNode.Order = attribute.Order;
+
+            siteMapNode.IsVideo = attribute.IsVideo;
+            siteMapNode.ContentLocationUrl = attribute.ContentLocationUrl;
+            siteMapNode.PlayerLocationUrl = attribute.PlayerLocationUrl;
+            siteMapNode.PlayerAllowEmbed = attribute.PlayerAllowEmbed;
+            siteMapNode.PlayerAutoplay = attribute.PlayerAutoplay;
+            siteMapNode.VideoDuration = attribute.VideoDuration;
+            siteMapNode.ViewCount = attribute.ViewCount;
+            siteMapNode.VideoRating = attribute.VideoRating;
+            siteMapNode.FamilyFriendly = attribute.FamilyFriendly;
+            siteMapNode.GalleryLocation = attribute.GalleryLocation;
+            siteMapNode.GalleryTitle = attribute.GalleryTitle;
+            siteMapNode.RequiresSubscription = attribute.RequiresSubscription;
+            siteMapNode.VideoUploader = attribute.VideoUploader;
+            siteMapNode.VideoUploaderUrl = attribute.VideoUploaderUrl;
+            siteMapNode.VideoLive = attribute.VideoLive;
 
             // Handle route details
             siteMapNode.Route = attribute.Route;

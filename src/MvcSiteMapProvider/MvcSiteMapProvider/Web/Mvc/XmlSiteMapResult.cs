@@ -20,6 +20,7 @@ namespace MvcSiteMapProvider.Web.Mvc
         : ActionResult
     {
         public XmlSiteMapResult(
+            SiteMapType type,
             int page,
             ISiteMapNode rootNode,
             IEnumerable<string> siteMapCacheKeys,
@@ -36,7 +37,9 @@ namespace MvcSiteMapProvider.Web.Mvc
             if (cultureContextFactory == null)
                 throw new ArgumentNullException("cultureContextFactory");
 
+            this.MapType = type;
             this.Ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
+            this.Vns = "http://www.google.com/schemas/sitemap-video/1.1";
             this.Page = page;
             this.RootNode = rootNode;
             this.SiteMapCacheKeys = siteMapCacheKeys;
@@ -67,11 +70,15 @@ namespace MvcSiteMapProvider.Web.Mvc
         /// </summary>
         protected Dictionary<string, object> SourceMetadata = new Dictionary<string, object> { { "HtmlHelper", typeof(XmlSiteMapResult).FullName } };
 
+        protected SiteMapType MapType { get; private set; }
+
         /// <summary>
         /// Gets or sets the XML namespace.
         /// </summary>
         /// <value>The XML namespace.</value>
         protected XNamespace Ns { get; private set; }
+
+        protected XNamespace Vns { get; private set; }
 
         /// <summary>
         /// Gets or sets the root node.
@@ -152,6 +159,10 @@ namespace MvcSiteMapProvider.Web.Mvc
 
             // Generate URL set
             var urlSet = new XElement(Ns + "urlset");
+            if (this.MapType == SiteMapType.Video)
+            {
+                urlSet.Add(new XAttribute(XNamespace.Xmlns + "video", Vns));
+            }
             urlSet.Add(GenerateUrlElements(
                 context,
                 flattenedHierarchy.Skip((page - 1) * MaxNumberOfLinksPerFile)
@@ -262,17 +273,106 @@ namespace MvcSiteMapProvider.Web.Mvc
                 using (var cultureContext = this.cultureContextFactory.CreateInvariant())
                 {
                     // Generate element properties
-                    if (siteMapNode.LastModifiedDate > DateTime.MinValue)
+                    if (!siteMapNode.IsVideo)
                     {
-                        urlElement.Add(new XElement(Ns + "lastmod", siteMapNode.LastModifiedDate.ToUniversalTime()));
+                        if (siteMapNode.LastModifiedDate > DateTime.MinValue)
+                        {
+                            urlElement.Add(new XElement(Ns + "lastmod", siteMapNode.LastModifiedDate.ToUniversalTime()));
+                        }
+                        if (siteMapNode.ChangeFrequency != ChangeFrequency.Undefined)
+                        {
+                            urlElement.Add(new XElement(Ns + "changefreq", siteMapNode.ChangeFrequency.ToString().ToLower()));
+                        }
+                        if (siteMapNode.UpdatePriority != UpdatePriority.Undefined)
+                        {
+                            urlElement.Add(new XElement(Ns + "priority", string.Format("{0:0.0}", ((double)siteMapNode.UpdatePriority / 100))));
+                        }
                     }
-                    if (siteMapNode.ChangeFrequency != ChangeFrequency.Undefined)
+
+                    if (!siteMapNode.IsVideo && this.MapType == SiteMapType.Video)
                     {
-                        urlElement.Add(new XElement(Ns + "changefreq", siteMapNode.ChangeFrequency.ToString().ToLower()));
+                        urlElement = null;
                     }
-                    if (siteMapNode.UpdatePriority != UpdatePriority.Undefined)
+
+                    if (siteMapNode.IsVideo && this.MapType == SiteMapType.Video)
                     {
-                        urlElement.Add(new XElement(Ns + "priority", string.Format("{0:0.0}", ((double)siteMapNode.UpdatePriority / 100))));
+                        var videoElement = new XElement(Vns + "video");
+
+                        #region Required Video Tags
+                        
+
+
+
+                        videoElement.Add(new XElement(Vns + "thumbnail_loc", siteMapNode.ImageUrl));
+                        videoElement.Add(new XElement(Vns + "title", siteMapNode.Title)); // max length 100 characters
+                        videoElement.Add(new XElement(Vns + "description", siteMapNode.Description)); // max length 2048 characters
+                        videoElement.Add(new XElement(Vns + "content_loc", siteMapNode.ContentLocationUrl));
+
+                        var playerLocElement = new XElement(Vns + "player_loc", siteMapNode.PlayerLocationUrl); // usually the src in an embed tag
+                        playerLocElement.Add(new XAttribute("allow_embed", siteMapNode.PlayerAllowEmbed ? "yes" : "no"));
+                        //playerLocElement.Add(new XAttribute("autoplay", siteMapNode.PlayerAutoplay ? "yes" : "no")); // Incorrect use of autoplay -- it is a string that Google appends to the URL to activate autoplay, not a yes no indication of autoplay
+                        videoElement.Add(playerLocElement);
+
+                        #endregion Required Video Tags
+
+                        #region Optional Video Tags
+
+                        if (siteMapNode.VideoDuration > 0 && siteMapNode.VideoDuration != null)
+                        {
+                            videoElement.Add(new XElement(Vns + "duration", siteMapNode.VideoDuration.ToString()));
+                        }
+                        if (siteMapNode.ExpirationDate > DateTime.MinValue && siteMapNode.ExpirationDate > siteMapNode.LastModifiedDate)
+                        {
+                            videoElement.Add(new XElement(Vns + "expiration_date", siteMapNode.ExpirationDate.ToUniversalTime())); // Allowed values are complete date (YYYY-MM-DD) and complete date plus hours, minutes and seconds, and timezone (YYYY-MM-DDThh:mm:ss+TZD). For example, 2012-07-16T19:20:30+08:00
+                        }
+                        if (siteMapNode.VideoRating <= 5 && siteMapNode.VideoRating >= 0 && siteMapNode.VideoRating != null)
+                        {
+                            videoElement.Add(new XElement(Vns + "rating", siteMapNode.VideoRating.ToString())); // decimal 0 - 5
+                        }
+                        if (siteMapNode.ViewCount > 0 && siteMapNode.ViewCount != null)
+                        {
+                            videoElement.Add(new XElement(Vns + "view_count", siteMapNode.ViewCount.ToString()));
+                        }
+                        if (siteMapNode.LastModifiedDate > DateTime.MinValue)
+                        {
+                            videoElement.Add(new XElement(Vns + "publication_date", siteMapNode.LastModifiedDate.ToUniversalTime())); // Allowed values are complete date (YYYY-MM-DD) and complete date plus hours, minutes and seconds, and timezone (YYYY-MM-DDThh:mm:ss+TZD). For example, 2012-07-16T19:20:30+08:00
+                        }
+
+                        // a video can have up to 32 video:tag elements
+
+                        // video:category - max length 256 characters
+                        
+                        videoElement.Add(new XElement(Vns + "family_friendly", siteMapNode.FamilyFriendly ? "yes" : "no"));
+
+                        // video:restriction
+
+                        if (!string.IsNullOrEmpty(siteMapNode.GalleryLocation))
+                        {
+                            var galleryLocElement = new XElement(Vns + "gallery_loc", siteMapNode.GalleryLocation);
+                            if (!string.IsNullOrEmpty(siteMapNode.GalleryTitle))
+                            {
+                                galleryLocElement.Add(new XAttribute("title", siteMapNode.GalleryTitle));
+                            }
+                            videoElement.Add(galleryLocElement);
+                        }
+
+                        // video:price
+                       
+                        videoElement.Add(new XElement(Vns + "requires_subscription", siteMapNode.RequiresSubscription ? "yes" : "no"));
+                        if (!string.IsNullOrEmpty(siteMapNode.VideoUploader))
+                        {
+                            var uploaderLocElement = new XElement(Vns + "uploader", siteMapNode.VideoUploader);
+                            if (!string.IsNullOrEmpty(siteMapNode.VideoUploaderUrl))
+                            {
+                                uploaderLocElement.Add(new XAttribute("info", siteMapNode.VideoUploaderUrl));
+                            }
+                            videoElement.Add(uploaderLocElement);
+                        }
+                        videoElement.Add(new XElement(Vns + "live", siteMapNode.VideoLive ? "yes" : "no"));
+
+                        #endregion Optional Video Tags
+
+                        urlElement.Add(videoElement);
                     }
                 }
 

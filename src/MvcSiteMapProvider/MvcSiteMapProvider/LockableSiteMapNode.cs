@@ -164,6 +164,215 @@ namespace MvcSiteMapProvider
         }
 
         /// <summary>
+        /// Gets or sets the expiration date.
+        /// </summary>
+        /// <value>The expiration date.</value>
+        public override DateTime ExpirationDate
+        {
+            get { return base.ExpirationDate; }
+            set
+            {
+                this.ThrowIfReadOnly("ExpirationDate");
+                base.ExpirationDate = value;
+            }
+        }
+
+        public override bool IsVideo
+        {
+            get
+            {
+                return base.IsVideo;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("IsVideo");
+                base.IsVideo = value;
+            }
+        }
+
+        public override string ContentLocationUrl
+        {
+            get
+            {
+                return base.ContentLocationUrl;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("ContentLocationUrl");
+                base.ContentLocationUrl = value;
+            }
+        }
+
+        public override string PlayerLocationUrl
+        {
+            get
+            {
+                return base.PlayerLocationUrl;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("PlayerLocationUrl");
+                base.PlayerLocationUrl = value;
+            }
+        }
+
+        public override bool PlayerAllowEmbed
+        {
+            get
+            {
+                return base.PlayerAllowEmbed;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("PlayerAllowEmbed");
+                base.PlayerAllowEmbed = value;
+            }
+        }
+
+        public override bool PlayerAutoplay
+        {
+            get
+            {
+                return base.PlayerAutoplay;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("PlayerAutoplay");
+                base.PlayerAutoplay= value;
+            }
+        }
+
+        public override int VideoDuration
+        {
+            get
+            {
+                return base.VideoDuration;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("VideoDuration");
+                base.VideoDuration = value;
+            }
+        }
+
+        public override int ViewCount
+        {
+            get
+            {
+                return base.ViewCount;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("ViewCount");
+                base.ViewCount = value;
+            }
+        }
+
+        public override double VideoRating
+        {
+            get
+            {
+                return base.VideoRating;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("VideoRating");
+                base.VideoRating = value;
+            }
+        }
+
+        public override bool FamilyFriendly
+        {
+            get
+            {
+                return base.FamilyFriendly;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("FamilyFriendly");
+                base.FamilyFriendly = value;
+            }
+        }
+
+        public override string GalleryLocation
+        {
+            get
+            {
+                return base.GalleryLocation;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("GalleryLocation");
+                base.GalleryLocation = value;
+            }
+        }
+
+        public override string GalleryTitle
+        {
+            get
+            {
+                return base.GalleryTitle;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("GalleryTitle");
+                base.GalleryTitle = value;
+            }
+        }
+
+        public override bool RequiresSubscription
+        {
+            get
+            {
+                return base.RequiresSubscription;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("RequiresSubscription");
+                base.RequiresSubscription = value;
+            }
+        }
+
+        public override string VideoUploader
+        {
+            get
+            {
+                return base.VideoUploader;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("VideoUploader");
+                base.VideoUploader = value;
+            }
+        }
+
+        public override string VideoUploaderUrl
+        {
+            get
+            {
+                return base.VideoUploaderUrl;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("VideoUploaderUrl");
+                base.VideoUploaderUrl = value;
+            }
+        }
+
+        public override bool VideoLive
+        {
+            get
+            {
+                return base.VideoLive;
+            }
+            set
+            {
+                this.ThrowIfReadOnly("VideoLive");
+                base.VideoLive = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the change frequency.
         /// </summary>
         /// <value>The change frequency.</value>
@@ -380,6 +589,20 @@ namespace MvcSiteMapProvider
             {
                 this.ThrowIfReadOnly("CanonicalUrl");
                 base.CanonicalUrl = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the canonical URL for SEO.
+        /// </summary>
+        /// <remarks>Uses the URL value.</remarks>
+        public override string CanonicalUrlSeo
+        {
+            get { return base.CanonicalUrlSeo; }
+            set
+            {
+                this.ThrowIfReadOnly("CanonicalUrlSeo");
+                base.CanonicalUrlSeo = value;
             }
         }
 

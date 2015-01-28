@@ -255,13 +255,31 @@ namespace MvcSiteMapProvider.Builder
             node.HostName = attribute.HostName;
             node.CanonicalKey = attribute.CanonicalKey;
             node.CanonicalUrl = attribute.CanonicalUrl;
+            node.CanonicalUrlSeo = attribute.CanonicalUrlSeo;
             node.CanonicalUrlProtocol = attribute.CanonicalUrlProtocol;
             node.CanonicalUrlHostName = attribute.CanonicalUrlHostName;
             node.MetaRobotsValues.AddRange(attribute.MetaRobotsValues);
             node.LastModifiedDate = string.IsNullOrEmpty(attribute.LastModifiedDate) ? DateTime.MinValue : DateTime.Parse(attribute.LastModifiedDate);
+            node.ExpirationDate = string.IsNullOrEmpty(attribute.ExpirationDate) ? DateTime.Today.AddYears(2) : DateTime.Parse(attribute.ExpirationDate);
             node.ChangeFrequency = attribute.ChangeFrequency;
             node.UpdatePriority = attribute.UpdatePriority;
             node.Order = attribute.Order;
+
+            node.IsVideo = attribute.IsVideo;
+            node.ContentLocationUrl = attribute.ContentLocationUrl;
+            node.PlayerLocationUrl = attribute.PlayerLocationUrl;
+            node.PlayerAllowEmbed = attribute.PlayerAllowEmbed;
+            node.PlayerAutoplay = attribute.PlayerAutoplay;
+            node.VideoDuration = attribute.VideoDuration;
+            node.ViewCount = attribute.ViewCount;
+            node.VideoRating = attribute.VideoRating;
+            node.FamilyFriendly = attribute.FamilyFriendly;
+            node.GalleryLocation = attribute.GalleryLocation;
+            node.GalleryTitle = attribute.GalleryTitle;
+            node.RequiresSubscription = attribute.RequiresSubscription;
+            node.VideoUploader = attribute.VideoUploader;
+            node.VideoUploaderUrl = attribute.VideoUploaderUrl;
+            node.VideoLive = attribute.VideoLive;
 
             // Handle route details
             node.Route = attribute.Route;

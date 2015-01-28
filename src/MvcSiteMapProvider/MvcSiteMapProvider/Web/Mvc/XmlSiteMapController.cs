@@ -34,7 +34,17 @@ namespace MvcSiteMapProvider.Web.Mvc
         /// <returns>XmlSiteMapResult instance</returns>
         public ActionResult Index(int page = 0)
         {
-            return xmlSiteMapResultFactory.Create(page);
+            return xmlSiteMapResultFactory.Create(SiteMapType.All, page);
+        }
+
+        /// <summary>
+        /// GET: /XmlSiteMap/Video
+        /// </summary>
+        /// <param name="page">The page.</param>
+        /// <returns>XmlSiteMapResult instance</returns>
+        public ActionResult Video(int page = 0)
+        {
+            return xmlSiteMapResultFactory.Create(SiteMapType.Video, page, "video-sitemap-{page}.xml");
         }
 
         /// <summary>
@@ -44,6 +54,16 @@ namespace MvcSiteMapProvider.Web.Mvc
         public static void RegisterRoutes(RouteCollection routeCollection)
         {
             List<RouteBase> routes = new List<RouteBase> {
+                new Route("video-sitemap.xml",
+                    new RouteValueDictionary(
+                        new { controller = "XmlSiteMap", action = "Video", page = 0 }),
+                            new MvcRouteHandler()),
+
+                new Route("video-sitemap-{page}.xml",
+                    new RouteValueDictionary(
+                        new { controller = "XmlSiteMap", action = "Video", page = 0 }),
+                            new MvcRouteHandler()),
+
                 new Route("sitemap.xml",
                     new RouteValueDictionary(
                         new { controller = "XmlSiteMap", action = "Index", page = 0 }),

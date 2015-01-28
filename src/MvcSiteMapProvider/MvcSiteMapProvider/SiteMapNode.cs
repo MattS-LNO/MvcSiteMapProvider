@@ -83,10 +83,20 @@ namespace MvcSiteMapProvider
         protected DateTime lastModifiedDate = DateTime.MinValue;
         protected ChangeFrequency changeFrequency = ChangeFrequency.Undefined;
         protected UpdatePriority updatePriority = UpdatePriority.Undefined;
+
+        protected DateTime expirationDate = DateTime.Today.AddYears(2);
+        protected bool isVideo = false;
+        protected bool allowEmbed = false;
+        protected bool isAutoplay = true;
+        protected bool isFamilyFriendly = true;
+        protected bool requiresSubscription = false;
+        protected bool isLive = false;
+        
         protected bool clickable = true;
         protected string url = string.Empty;
         protected string resolvedUrl = string.Empty;
         protected string canonicalUrl = string.Empty;
+        protected string canonicalUrlSeo = string.Empty;
         protected string canonicalKey = string.Empty;
 
         /// <summary>
@@ -253,6 +263,88 @@ namespace MvcSiteMapProvider
             set { this.updatePriority = value; } 
         }
 
+        public override DateTime ExpirationDate 
+        {
+            get { return this.expirationDate; }
+            set { this.expirationDate = value; } 
+        }
+
+        public override bool IsVideo
+        {
+            get { return this.isVideo; }
+            set { this.isVideo = value; }
+        }
+
+        public override string ContentLocationUrl 
+        { 
+            get; 
+            set; 
+        }
+        public override string PlayerLocationUrl 
+        { 
+            get; 
+            set; 
+        }
+        public override bool PlayerAllowEmbed
+        {
+            get { return this.allowEmbed; }
+            set { this.allowEmbed = value; }
+        }
+        public override bool PlayerAutoplay
+        {
+            get { return this.isAutoplay; }
+            set { this.isAutoplay = value; }
+        }
+        public override int VideoDuration 
+        { 
+            get; 
+            set; 
+        }
+        public override int ViewCount 
+        { 
+            get; 
+            set; 
+        }
+        public override double VideoRating
+        { 
+            get; 
+            set; 
+        }
+        public override bool FamilyFriendly 
+        {
+            get { return this.isFamilyFriendly; }
+            set { this.isFamilyFriendly = value; }
+        }
+        public override string GalleryLocation 
+        { 
+            get; 
+            set; 
+        }
+        public override string GalleryTitle 
+        { 
+            get; 
+            set; 
+        }
+        public override bool RequiresSubscription 
+        {
+            get { return this.requiresSubscription; }
+            set { this.requiresSubscription = value; }
+        }
+        public override string VideoUploader 
+        { 
+            get; 
+            set; 
+        }
+        public override string VideoUploaderUrl
+        {
+            get;
+            set;
+        }
+        public override bool VideoLive 
+        {
+            get { return this.isLive; }
+            set { this.isLive = value; }
+        }
 
         #region Visibility
 
@@ -478,10 +570,10 @@ namespace MvcSiteMapProvider
         /// Gets or sets the canonical URL.
         /// </summary>
         /// <remarks>May not be used in conjunction with CanonicalKey. Only 1 canonical value is allowed.</remarks>
-        public override string CanonicalUrl 
+        public override string CanonicalUrl
         {
-            get 
-            { 
+            get
+            {
                 var absoluteCanonicalUrl = this.GetAbsoluteCanonicalUrl();
                 if (!string.IsNullOrEmpty(absoluteCanonicalUrl))
                 {
@@ -503,6 +595,31 @@ namespace MvcSiteMapProvider
                     }
                     this.canonicalUrl = value;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the canonical URL for SEO.
+        /// </summary>
+        /// <remarks>Uses URL value.</remarks>
+        public override string CanonicalUrlSeo
+        {
+            get
+            {
+                var absoluteCanonicalUrlSeo = this.GetAbsoluteCanonicalUrlSeo();
+                //if (!string.IsNullOrEmpty(absoluteCanonicalUrlSeo))
+                //{
+                //    var publicFacingUrlSeo = this.urlPath.GetPublicFacingUrl(this.HttpContext);
+                //    if (absoluteCanonicalUrlSeo.Equals(this.urlPath.UrlDecode(publicFacingUrlSeo.AbsoluteUri)))
+                //    {
+                //        return string.Empty;
+                //    }
+                //}
+                return absoluteCanonicalUrlSeo;
+            }
+            set
+            {
+                this.canonicalUrlSeo = value;
             }
         }
 
@@ -542,6 +659,23 @@ namespace MvcSiteMapProvider
                     var protocol = string.IsNullOrEmpty(node.Protocol) ? Uri.UriSchemeHttp : node.Protocol;
                     return this.urlPath.ResolveUrl(node.Url, protocol, node.HostName);
                 }
+            }
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Gets the absolute value of the canonical URL, finding the value by 
+        /// <see cref="P:MvcSiteMapProvider.ISiteMapNode.CanonicalKey"/> if necessary.
+        /// </summary>
+        /// <returns>The absolute canonical URL.</returns>
+        protected virtual string GetAbsoluteCanonicalUrlSeo()
+        {
+            var urlSeo = this.canonicalUrlSeo;
+            if (!string.IsNullOrEmpty(urlSeo))
+            {
+                // Use HTTP if not provided to force an absolute URL to be built.
+                var protocol = string.IsNullOrEmpty(this.CanonicalUrlProtocol) ? Uri.UriSchemeHttp : this.CanonicalUrlProtocol;
+                return this.urlPath.ResolveUrl(urlSeo, protocol, this.CanonicalUrlHostName);
             }
             return string.Empty;
         }
@@ -790,6 +924,22 @@ namespace MvcSiteMapProvider
             this.Attributes.CopyTo(node.Attributes);
             this.Roles.CopyTo(node.Roles);
             node.LastModifiedDate = this.LastModifiedDate;
+            node.ExpirationDate = this.expirationDate;
+            node.IsVideo = this.isVideo;
+            node.ContentLocationUrl = this.ContentLocationUrl;
+            node.PlayerLocationUrl = this.PlayerLocationUrl;
+            node.PlayerAllowEmbed = this.PlayerAllowEmbed;
+            node.PlayerAutoplay = this.PlayerAutoplay;
+            node.VideoDuration = this.VideoDuration;
+            node.ViewCount = this.ViewCount;
+            node.VideoRating = this.VideoRating;
+            node.FamilyFriendly = this.isFamilyFriendly;
+            node.GalleryLocation = this.GalleryLocation;
+            node.GalleryTitle = this.GalleryTitle;
+            node.RequiresSubscription = this.requiresSubscription;
+            node.VideoUploader = this.VideoUploader;
+            node.VideoUploader = this.VideoUploaderUrl;
+            node.VideoLive = this.isLive;
             node.ChangeFrequency = this.ChangeFrequency;
             node.UpdatePriority = this.UpdatePriority;
             node.VisibilityProvider = this.VisibilityProvider;
@@ -802,6 +952,7 @@ namespace MvcSiteMapProvider
             node.HostName = this.HostName;
             node.CanonicalKey = this.CanonicalKey;
             node.CanonicalUrl = this.canonicalUrl; // Get protected member
+            node.CanonicalUrlSeo = this.canonicalUrlSeo; // Get protected member
             node.CanonicalUrlProtocol = this.CanonicalUrlProtocol;
             node.CanonicalUrlHostName = this.CanonicalUrlHostName;
             this.MetaRobotsValues.CopyTo(node.MetaRobotsValues);

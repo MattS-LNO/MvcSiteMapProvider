@@ -95,6 +95,23 @@ namespace MvcSiteMapProvider
         /// <value>The last modified date.</value>
         public virtual DateTime? LastModifiedDate { get; set; }
 
+        public virtual DateTime? ExpirationDate { get; set; }
+        public virtual bool? IsVideo { get; set; }
+        public virtual string ContentLocationUrl { get; set; }
+        public virtual string PlayerLocationUrl { get; set; }
+        public virtual bool? PlayerAllowEmbed { get; set; }
+        public virtual bool? PlayerAutoplay { get; set; }
+        public virtual int? VideoDuration { get; set; }
+        public virtual int? ViewCount { get; set; }
+        public virtual double? VideoRating { get; set; }
+        public virtual bool? FamilyFriendly { get; set; }
+        public virtual string GalleryLocation { get; set; }
+        public virtual string GalleryTitle { get; set; }
+        public virtual bool? RequiresSubscription { get; set; }
+        public virtual string VideoUploader { get; set; }
+        public virtual string VideoUploaderUrl { get; set; }
+        public virtual bool? VideoLive { get; set; }
+
         /// <summary>
         /// Gets or sets the change frequency.
         /// </summary>
@@ -183,6 +200,12 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <remarks>May not be used in conjunction with CanonicalKey. Only 1 canonical value is allowed.</remarks>
         public virtual string CanonicalUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the canonical URL for SEO.
+        /// </summary>
+        /// <remarks>Uses the URL value.</remarks>
+        public virtual string CanonicalUrlSeo { get; set; }
 
         /// <summary>
         /// Gets or sets the protocol that will be used when resolving the canonical URL.
@@ -275,6 +298,40 @@ namespace MvcSiteMapProvider
             }
             if (this.LastModifiedDate != null && this.LastModifiedDate.HasValue)
                 node.LastModifiedDate = this.LastModifiedDate.Value;
+
+            if (this.ExpirationDate != null && this.ExpirationDate.HasValue)
+                node.ExpirationDate = this.ExpirationDate.Value;
+            if (this.IsVideo != null)
+                node.IsVideo = (bool)this.IsVideo;
+            if (!string.IsNullOrEmpty(this.ContentLocationUrl))
+                node.ContentLocationUrl = this.ContentLocationUrl;
+            if (!string.IsNullOrEmpty(this.PlayerLocationUrl))
+                node.PlayerLocationUrl = this.PlayerLocationUrl;
+            if (this.PlayerAllowEmbed != null)
+                node.PlayerAllowEmbed = (bool)this.PlayerAllowEmbed;
+            if (this.PlayerAutoplay != null)
+                node.PlayerAutoplay = (bool)this.PlayerAutoplay;
+            if (this.VideoDuration != null)
+                node.VideoDuration = (int)this.VideoDuration;
+            if (this.ViewCount != null)
+                node.ViewCount = (int)this.ViewCount;
+            if (this.VideoRating != null)
+                node.VideoRating = (double)this.VideoRating;
+            if (this.FamilyFriendly != null)
+                node.FamilyFriendly = (bool)this.FamilyFriendly;
+            if (!string.IsNullOrEmpty(this.GalleryLocation))
+                node.GalleryLocation = this.GalleryLocation;
+            if (!string.IsNullOrEmpty(GalleryTitle))
+                node.GalleryTitle = this.GalleryTitle;
+            if (this.RequiresSubscription != null)
+                node.RequiresSubscription = (bool)this.RequiresSubscription;
+            if (!string.IsNullOrEmpty(this.VideoUploader))
+                node.VideoUploader = this.VideoUploader;
+            if (!string.IsNullOrEmpty(this.VideoUploaderUrl))
+                node.VideoUploaderUrl = this.VideoUploaderUrl;
+            if (this.VideoLive != null)
+                node.VideoLive = (bool)this.VideoLive;
+
             if (this.ChangeFrequency != ChangeFrequency.Undefined)
                 node.ChangeFrequency = this.ChangeFrequency;
             if (this.UpdatePriority != UpdatePriority.Undefined)
@@ -299,6 +356,8 @@ namespace MvcSiteMapProvider
                 node.CanonicalKey = this.CanonicalKey;
             if (!string.IsNullOrEmpty(this.CanonicalUrl))
                 node.CanonicalUrl = this.CanonicalUrl;
+            if (!string.IsNullOrEmpty(this.CanonicalUrlSeo))
+                node.CanonicalUrlSeo = this.CanonicalUrlSeo;
             if (!string.IsNullOrEmpty(this.CanonicalUrlProtocol))
                 node.CanonicalUrlProtocol = this.CanonicalUrlProtocol;
             if (!string.IsNullOrEmpty(this.CanonicalUrlHostName))

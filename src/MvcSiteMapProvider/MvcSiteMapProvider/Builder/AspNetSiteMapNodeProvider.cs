@@ -133,13 +133,31 @@ namespace MvcSiteMapProvider.Builder
             siteMapNode.HostName = node.GetAttributeValue("hostName");
             siteMapNode.CanonicalKey = node.GetAttributeValue("canonicalKey");
             siteMapNode.CanonicalUrl = node.GetAttributeValue("canonicalUrl");
+            siteMapNode.CanonicalUrlSeo = node.GetAttributeValue("canonicalUrlSeo");
             siteMapNode.CanonicalUrlProtocol = node.GetAttributeValue("canonicalUrlProtocol");
             siteMapNode.CanonicalUrlHostName = node.GetAttributeValue("canonicalUrlHostName");
             siteMapNode.MetaRobotsValues.AddRange(node.GetAttributeValue("metaRobotsValues"), new[] { ' ' });
             siteMapNode.ChangeFrequency = (ChangeFrequency)Enum.Parse(typeof(ChangeFrequency), node.GetAttributeValueOrFallback("changeFrequency", "Undefined"));
             siteMapNode.UpdatePriority = (UpdatePriority)Enum.Parse(typeof(UpdatePriority), node.GetAttributeValueOrFallback("updatePriority", "Undefined"));
             siteMapNode.LastModifiedDate = DateTime.Parse(node.GetAttributeValueOrFallback("lastModifiedDate", DateTime.MinValue.ToString()));
+            siteMapNode.ExpirationDate = DateTime.Parse(node.GetAttributeValueOrFallback("expirationDate", DateTime.Today.ToString()));
             siteMapNode.Order = int.Parse(node.GetAttributeValueOrFallback("order", "0"));
+
+            siteMapNode.IsVideo = bool.Parse(node.GetAttributeValueOrFallback("isVideo", "false"));
+            siteMapNode.ContentLocationUrl = node.GetAttributeValue("contentLocationUrl");
+            siteMapNode.PlayerLocationUrl = node.GetAttributeValue("playerLocationUrl");
+            siteMapNode.PlayerAllowEmbed = bool.Parse(node.GetAttributeValueOrFallback("playerAllowEmbed", "false"));
+            siteMapNode.PlayerAutoplay = bool.Parse(node.GetAttributeValueOrFallback("playerAutoplay", "true"));
+            siteMapNode.VideoDuration = int.Parse(node.GetAttributeValueOrFallback("videoDuration", "-1"));
+            siteMapNode.ViewCount = int.Parse(node.GetAttributeValueOrFallback("viewCount", "-1"));
+            siteMapNode.VideoRating = double.Parse(node.GetAttributeValueOrFallback("videoRating", "-1"));
+            siteMapNode.FamilyFriendly = bool.Parse(node.GetAttributeValueOrFallback("familyFriendly", "true"));
+            siteMapNode.GalleryLocation = node.GetAttributeValue("galleryLocation");
+            siteMapNode.GalleryTitle = node.GetAttributeValue("galleryTitle");
+            siteMapNode.RequiresSubscription = bool.Parse(node.GetAttributeValueOrFallback("requiresSubscription", "false"));
+            siteMapNode.VideoUploader = node.GetAttributeValue("videoUploader");
+            siteMapNode.VideoUploaderUrl = node.GetAttributeValue("videoUploaderUrl");
+            siteMapNode.VideoLive = bool.Parse(node.GetAttributeValueOrFallback("isLive", "false"));
 
             // Handle route details
 

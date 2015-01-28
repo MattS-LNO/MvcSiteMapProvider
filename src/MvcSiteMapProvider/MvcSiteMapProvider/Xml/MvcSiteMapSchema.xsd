@@ -191,7 +191,114 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    
+
+    <!-- Video Specific Tags -->
+    <xs:attribute name="isVideo" type="small_boolean_type" use="optional" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Whether or not to include this video in the video sitemap. Default is false.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="contentLocationUrl" type="xs:anyURI" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. URL for video location.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="playerLocationUrl" type="xs:anyURI" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. URL for player location.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="playerAllowEmbed" type="small_boolean_type" use="optional" default="true">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Whether this player can be embeded in another webpage. Default is true.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="playerAutoplay" type="small_boolean_type" use="optional" default="true">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Whether this video will autoplay. Default is true.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="videoDuration" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Length of video file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="videoCount" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Not recommended. Static count for video views.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="videoRating" type="xs:double" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Not recommended. Static setting for video rating.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="familyFriendly" type="small_boolean_type" use="optional" default="true">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Whether the video is family friendly. Default is true.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="galleryLocation" type="xs:anyURI" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. URL for video gallery.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="galleryTitle" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Title for video gallery.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="requiresSubscription" type="small_boolean_type" use="optional" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Whether video requires subscription to view. Default is false.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="videoUploader" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Name or entity responsible for video upload.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="videoUploaderUrl" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. URL for more info regarding uploader. Must be on same domain as loc tag.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="isLive" type="small_boolean_type" use="optional" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Whether the video is a live feed. Default is false.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
     <!-- Canonical Tag -->
     <xs:attribute name="canonicalKey" type="xs:string" use="optional">
       <xs:annotation>
@@ -204,8 +311,15 @@
       <xs:annotation>
         <xs:documentation>
           Optional. The primary URL for what is completely or mostly duplicated content on the current node.
-          The value may be an absolute URL (in the current site or in an external site), a root relative URL starting with '/', 
+          The value may be an absolute URL (in the current site or in an external site), a root relative URL starting with '/',
           or a virtual application URL starting with '~/'.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="canonicalUrlSeo" type="xs:anyURI" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. The canonical URL for SEO on the primary page (canonicalUrl would be used on duplicate pages).
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -288,13 +402,20 @@
 	</xs:attributeGroup>
 
 	<xs:attributeGroup name="frequencyNodeAttributes">
-		<xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
-			<xs:annotation>
-				<xs:documentation>
-					Last modified date for the node. Will be output to sitemaps XML for search engines.
-				</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+    <xs:attribute name="lastModifiedDate" type="xs:dateTime" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Last modified date for the node. Will be output to sitemaps XML for search engines.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="expirationDate" type="xs:dateTime" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Expiration date for the node. Will be output to sitemaps XML for search engines.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
 		<xs:attribute name="changeFrequency" type="changefrequency_type" use="optional" default="Undefined" >
 			<xs:annotation>
 				<xs:documentation>
