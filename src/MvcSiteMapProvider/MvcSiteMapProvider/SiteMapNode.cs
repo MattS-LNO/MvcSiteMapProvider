@@ -938,7 +938,7 @@ namespace MvcSiteMapProvider
             node.GalleryTitle = this.GalleryTitle;
             node.RequiresSubscription = this.requiresSubscription;
             node.VideoUploader = this.VideoUploader;
-            node.VideoUploader = this.VideoUploaderUrl;
+            node.VideoUploaderUrl = this.VideoUploaderUrl;
             node.VideoLive = this.isLive;
             node.ChangeFrequency = this.ChangeFrequency;
             node.UpdatePriority = this.UpdatePriority;

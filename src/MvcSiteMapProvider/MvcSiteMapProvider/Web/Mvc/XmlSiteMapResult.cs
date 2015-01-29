@@ -273,7 +273,7 @@ namespace MvcSiteMapProvider.Web.Mvc
                 using (var cultureContext = this.cultureContextFactory.CreateInvariant())
                 {
                     // Generate element properties
-                    if (!siteMapNode.IsVideo)
+                    if (this.MapType != SiteMapType.Video)
                     {
                         if (siteMapNode.LastModifiedDate > DateTime.MinValue)
                         {

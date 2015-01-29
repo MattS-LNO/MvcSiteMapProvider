@@ -25,6 +25,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <DefineConstants Condition="  '$(DefineConstants)' == '' ">MVC3;NET40;</DefineConstants>
     <DefineConstants>MVC4;NET40;</DefineConstants>
+    <DocumentationFile>bin\Debug\MvcSiteMapProvider.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
