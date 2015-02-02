@@ -265,7 +265,7 @@ namespace MvcSiteMapProvider.Web.Mvc
             foreach (var siteMapNode in siteMapNodes)
             {
                 // Generate element
-                var nodeUrl = this.urlPath.MakeUrlAbsolute(this.BaseUrl, siteMapNode.Url);
+                var nodeUrl = this.urlPath.MakeUrlAbsolute(this.BaseUrl, siteMapNode.Url.Replace("’", "'").Replace("‘", "'"));
                 var urlElement = new XElement(Ns + "url",
                     new XElement(Ns + "loc", nodeUrl));
 

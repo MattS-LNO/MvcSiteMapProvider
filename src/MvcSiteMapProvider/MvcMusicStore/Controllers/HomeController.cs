@@ -33,7 +33,7 @@ namespace MvcMusicStore.Controllers
                 .ToList();
         }
 
-        [MvcSiteMapNode(IsVideo = true, Key = "NewPage", ParentKey = "Index", CanonicalUrlSeo = "/new-page",
+        [MvcSiteMapNode(IsVideo = true, Key = "NewPage", ParentKey = "Index", CanonicalUrlSeo = "/new-page", ChangeFrequency = ChangeFrequency.Monthly, UpdatePriority = UpdatePriority.Critical,
             Title = "New Video Page", Description = "A description about New Video Page.",
             ContentLocationUrl = "http://html5.learnnowonline.com/T/SRCC/SRC2.MP4", ExpirationDate = "2017-02-01T23:59:59-06:00", FamilyFriendly = true, GalleryLocation = "http://www.learnnowonline.com/courses",
             GalleryTitle = "LearnNowOnline", ImageUrl = "http://ca1.learnnowonline.com/content/images/thumbnails/src2.png", LastModifiedDate = "2014-12-01T11:59:59-06:00", PlayerAllowEmbed = true,
