@@ -3,5 +3,5 @@
 <%@ Import Namespace="MvcSiteMapProvider.Web.Html.Models" %>
 
 <% if (Model.CurrentNode != null) { %>
-<%=Model.CurrentNode.Title%>
+<%= Model.CurrentNode.Title %>
 <% } %>

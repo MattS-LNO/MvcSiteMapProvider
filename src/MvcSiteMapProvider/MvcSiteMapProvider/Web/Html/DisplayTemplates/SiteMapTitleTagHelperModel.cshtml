@@ -1,0 +1,9 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapTitleTagHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+@if (Model.CurrentNode != null && !string.IsNullOrEmpty(Model.CurrentNode.Title)) {
+<title>@Model.CurrentNode.Title</title>
+<meta itemprop="name" content="@Model.CurrentNode.Title" />
+<meta property="og:title" content="@Model.CurrentNode.Title" />
+}

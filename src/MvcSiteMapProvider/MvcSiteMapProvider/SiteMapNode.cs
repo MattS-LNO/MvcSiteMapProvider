@@ -18,7 +18,7 @@ namespace MvcSiteMapProvider
         : SiteMapNodePositioningBase, ISiteMapNode
     {
         public SiteMapNode(
-            ISiteMap siteMap, 
+            ISiteMap siteMap,
             string key,
             bool isDynamic,
             ISiteMapNodePluginProvider pluginProvider,
@@ -42,7 +42,7 @@ namespace MvcSiteMapProvider
                 throw new ArgumentNullException("localizationService");
             if (urlPath == null)
                 throw new ArgumentNullException("urlPath");
-            
+
             this.siteMap = siteMap;
             this.key = key;
             this.isDynamic = isDynamic;
@@ -91,7 +91,7 @@ namespace MvcSiteMapProvider
         protected bool isFamilyFriendly = true;
         protected bool requiresSubscription = false;
         protected bool isLive = false;
-        
+
         protected bool clickable = true;
         protected string url = string.Empty;
         protected string resolvedUrl = string.Empty;
@@ -137,7 +137,7 @@ namespace MvcSiteMapProvider
         /// <value>
         /// The HTTP method.
         /// </value>
-        public override string HttpMethod 
+        public override string HttpMethod
         {
             get { return this.httpMethod; }
             set { this.httpMethod = value; }
@@ -157,7 +157,7 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <value>The title.</value>
         /// <remarks>The title can be localized using a resource provider.</remarks>
-        public override string Title 
+        public override string Title
         {
             get { return localizationService.GetResourceString("title", this.title, this.SiteMap); }
             set { this.title = localizationService.ExtractExplicitResourceKey("title", value); }
@@ -168,10 +168,10 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <value>The description.</value>
         /// <remarks>The description can be localized using a resource provider.</remarks>
-        public override string Description 
+        public override string Description
         {
-            get 
-            { 
+            get
+            {
                 var result = localizationService.GetResourceString("description", this.description, this.SiteMap);
                 if (this.SiteMap.UseTitleIfDescriptionNotProvided && string.IsNullOrEmpty(result))
                 {
@@ -180,9 +180,9 @@ namespace MvcSiteMapProvider
 
                 return result;
             }
-            set 
-            { 
-                this.description = localizationService.ExtractExplicitResourceKey("description", value); 
+            set
+            {
+                this.description = localizationService.ExtractExplicitResourceKey("description", value);
             }
         }
 
@@ -197,10 +197,10 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <value>The image URL.</value>
         /// <remarks>The image URL can be localized using a resource provider.</remarks>
-        public override string ImageUrl 
+        public override string ImageUrl
         {
-            get 
-            { 
+            get
+            {
                 var imageUrl = localizationService.GetResourceString("imageUrl", this.imageUrl, this.SiteMap);
                 return this.urlPath.ResolveContentUrl(imageUrl, this.ImageUrlProtocol, this.ImageUrlHostName);
             }
@@ -237,20 +237,20 @@ namespace MvcSiteMapProvider
         /// Gets or sets the last modified date.
         /// </summary>
         /// <value>The last modified date.</value>
-        public override DateTime LastModifiedDate 
-        { 
-            get { return this.lastModifiedDate; } 
-            set { this.lastModifiedDate = value; } 
+        public override DateTime LastModifiedDate
+        {
+            get { return this.lastModifiedDate; }
+            set { this.lastModifiedDate = value; }
         }
 
         /// <summary>
         /// Gets or sets the change frequency.
         /// </summary>
         /// <value>The change frequency.</value>
-        public override ChangeFrequency ChangeFrequency 
-        { 
+        public override ChangeFrequency ChangeFrequency
+        {
             get { return this.changeFrequency; }
-            set { this.changeFrequency = value; } 
+            set { this.changeFrequency = value; }
         }
 
         /// <summary>
@@ -258,15 +258,15 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <value>The update priority.</value>
         public override UpdatePriority UpdatePriority
-        { 
-            get { return this.updatePriority; } 
-            set { this.updatePriority = value; } 
+        {
+            get { return this.updatePriority; }
+            set { this.updatePriority = value; }
         }
 
-        public override DateTime ExpirationDate 
+        public override DateTime ExpirationDate
         {
             get { return this.expirationDate; }
-            set { this.expirationDate = value; } 
+            set { this.expirationDate = value; }
         }
 
         public override bool IsVideo
@@ -275,15 +275,15 @@ namespace MvcSiteMapProvider
             set { this.isVideo = value; }
         }
 
-        public override string ContentLocationUrl 
-        { 
-            get; 
-            set; 
+        public override string ContentLocationUrl
+        {
+            get;
+            set;
         }
-        public override string PlayerLocationUrl 
-        { 
-            get; 
-            set; 
+        public override string PlayerLocationUrl
+        {
+            get;
+            set;
         }
         public override bool PlayerAllowEmbed
         {
@@ -295,52 +295,52 @@ namespace MvcSiteMapProvider
             get { return this.isAutoplay; }
             set { this.isAutoplay = value; }
         }
-        public override int VideoDuration 
-        { 
-            get; 
-            set; 
+        public override int VideoDuration
+        {
+            get;
+            set;
         }
-        public override int ViewCount 
-        { 
-            get; 
-            set; 
+        public override int ViewCount
+        {
+            get;
+            set;
         }
         public override double VideoRating
-        { 
-            get; 
-            set; 
+        {
+            get;
+            set;
         }
-        public override bool FamilyFriendly 
+        public override bool FamilyFriendly
         {
             get { return this.isFamilyFriendly; }
             set { this.isFamilyFriendly = value; }
         }
-        public override string GalleryLocation 
-        { 
-            get; 
-            set; 
+        public override string GalleryLocation
+        {
+            get;
+            set;
         }
-        public override string GalleryTitle 
-        { 
-            get; 
-            set; 
+        public override string GalleryTitle
+        {
+            get;
+            set;
         }
-        public override bool RequiresSubscription 
+        public override bool RequiresSubscription
         {
             get { return this.requiresSubscription; }
             set { this.requiresSubscription = value; }
         }
-        public override string VideoUploader 
-        { 
-            get; 
-            set; 
+        public override string VideoUploader
+        {
+            get;
+            set;
         }
         public override string VideoUploaderUrl
         {
             get;
             set;
         }
-        public override bool VideoLive 
+        public override bool VideoLive
         {
             get { return this.isLive; }
             set { this.isLive = value; }
@@ -420,7 +420,7 @@ namespace MvcSiteMapProvider
         ///   <c>true</c> if clickable; otherwise, <c>false</c>.
         /// </value>
         public override bool Clickable
-        { 
+        {
             get { return this.clickable; }
             set { this.clickable = value; }
         }
@@ -439,7 +439,7 @@ namespace MvcSiteMapProvider
         /// <value>
         /// The URL.
         /// </value>
-        public override string Url 
+        public override string Url
         {
             get
             {
@@ -647,6 +647,7 @@ namespace MvcSiteMapProvider
             {
                 // Use HTTP if not provided to force an absolute URL to be built.
                 var protocol = string.IsNullOrEmpty(this.CanonicalUrlProtocol) ? Uri.UriSchemeHttp : this.CanonicalUrlProtocol;
+
                 return this.urlPath.ResolveUrl(url, protocol, this.CanonicalUrlHostName);
             }
             var key = this.canonicalKey;
@@ -657,6 +658,7 @@ namespace MvcSiteMapProvider
                 {
                     // Use HTTP if not provided to force an absolute URL to be built.
                     var protocol = string.IsNullOrEmpty(node.Protocol) ? Uri.UriSchemeHttp : node.Protocol;
+
                     return this.urlPath.ResolveUrl(node.Url, protocol, node.HostName);
                 }
             }
@@ -675,6 +677,7 @@ namespace MvcSiteMapProvider
             {
                 // Use HTTP if not provided to force an absolute URL to be built.
                 var protocol = string.IsNullOrEmpty(this.CanonicalUrlProtocol) ? Uri.UriSchemeHttp : this.CanonicalUrlProtocol;
+
                 return this.urlPath.ResolveUrl(urlSeo, protocol, this.CanonicalUrlHostName);
             }
             return string.Empty;
@@ -722,17 +725,17 @@ namespace MvcSiteMapProvider
         /// Gets the route values.
         /// </summary>
         /// <value>The route values.</value>
-        public override IRouteValueDictionary RouteValues 
-        { 
-            get 
+        public override IRouteValueDictionary RouteValues
+        {
+            get
             {
                 if (this.IsReadOnly && !this.AreRouteParametersPreserved)
                 {
                     this.PreserveRouteParameters();
                     this.AreRouteParametersPreserved = true;
                 }
-                return this.routeValues; 
-            } 
+                return this.routeValues;
+            }
         }
 
         /// <summary>
@@ -781,10 +784,10 @@ namespace MvcSiteMapProvider
         /// </summary>
         /// <returns><c>true</c> if the route values have been preserved for the current request; otherwise <c>false</c>.</returns>
         /// <remarks>This property must be overridden and provide an implementation that is stored in the request cache.</remarks>
-        protected virtual bool AreRouteParametersPreserved 
+        protected virtual bool AreRouteParametersPreserved
         {
             get { return false; }
-            set { } 
+            set { }
         }
 
         /// <summary>

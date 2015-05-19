@@ -186,6 +186,12 @@
     <Compile Include="Web\Compilation\BuildManagerAdapter.cs" />
     <Compile Include="Web\CompositeBindingProvider.cs" />
     <Compile Include="Web\CustomBindingProvider.cs" />
+    <Compile Include="Web\Html\Models\SiteMapDescriptionTagHelperModel.cs" />
+    <Compile Include="Web\Html\Models\SiteMapDescriptionHelperModel.cs" />
+    <Compile Include="Web\Html\Models\SiteMapTitleTagHelperModel.cs" />
+    <Compile Include="Web\Html\SiteMapDescriptionTagHelper.cs" />
+    <Compile Include="Web\Html\SiteMapDescriptionHelper.cs" />
+    <Compile Include="Web\Html\SiteMapTitleTagHelper.cs" />
     <Compile Include="Web\IBinding.cs" />
     <Compile Include="Web\IBindingFactory.cs" />
     <Compile Include="Web\IBindingProvider.cs" />
@@ -195,6 +201,7 @@
     <Compile Include="Web\Mvc\Filters\GlobalFilterProvider.cs" />
     <Compile Include="Web\Mvc\Filters\IGlobalFilterProvider.cs" />
     <Compile Include="Web\Mvc\Filters\SiteMapCacheReleaseAttribute.cs" />
+    <Compile Include="Web\Mvc\Filters\SiteMapDescriptionAttribute.cs" />
     <Compile Include="Web\Routing\RouteDataExtensions.cs" />
     <Compile Include="Web\Mvc\SiteMapHttpResponse.cs" />
     <Compile Include="Web\Mvc\SiteMapHttpResponseCache.cs" />
@@ -398,6 +405,9 @@
     <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapNodeModelList.cshtml" />
     <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapDescriptionHelperModel.cshtml" />
+    <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapTitleTagHelperModel.cshtml" />
+    <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapDescriptionTagHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Web\Html\DisplayTemplates\MenuHelperModel.ascx">
@@ -452,7 +462,21 @@
   <ItemGroup>
     <None Include="Web\Html\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapDescriptionHelperModel.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapTitleTagHelperModel.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Web\Html\DisplayTemplates\SiteMapDescriptionTagHelperModel.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

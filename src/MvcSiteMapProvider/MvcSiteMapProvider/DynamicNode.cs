@@ -357,7 +357,13 @@ namespace MvcSiteMapProvider
             if (!string.IsNullOrEmpty(this.CanonicalUrl))
                 node.CanonicalUrl = this.CanonicalUrl;
             if (!string.IsNullOrEmpty(this.CanonicalUrlSeo))
+            {
                 node.CanonicalUrlSeo = this.CanonicalUrlSeo;
+            }
+            else if (!string.IsNullOrEmpty(this.CanonicalUrl))
+            {
+                node.CanonicalUrlSeo = this.CanonicalUrl;
+            }
             if (!string.IsNullOrEmpty(this.CanonicalUrlProtocol))
                 node.CanonicalUrlProtocol = this.CanonicalUrlProtocol;
             if (!string.IsNullOrEmpty(this.CanonicalUrlHostName))
