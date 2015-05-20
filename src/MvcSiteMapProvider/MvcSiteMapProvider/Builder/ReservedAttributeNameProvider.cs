@@ -51,6 +51,7 @@ namespace MvcSiteMapProvider.Builder
                 || attributeName == "order"
                 || attributeName == "httpMethod"
                 || attributeName == "resourceKey"
+                || attributeName == "site"
                 || attributeName == "title"
                 || attributeName == "description"
                 || attributeName == "targetFrame"

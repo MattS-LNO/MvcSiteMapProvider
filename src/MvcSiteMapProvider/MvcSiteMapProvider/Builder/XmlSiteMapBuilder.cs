@@ -142,6 +142,7 @@ namespace MvcSiteMapProvider.Builder
             ISiteMapNode siteMapNode = siteMapNodeFactory.Create(siteMap, key, implicitResourceKey);
 
             // Assign values
+            siteMapNode.Site = node.GetAttributeValue("site");
             siteMapNode.Title = title;
             siteMapNode.Description = node.GetAttributeValue("description");
             siteMapNode.Attributes.AddRange(node, false);

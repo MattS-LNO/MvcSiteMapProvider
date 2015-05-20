@@ -60,6 +60,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="site" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional site (or node group) name.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="title" type="xs:string" use="required">
       <xs:annotation>
         <xs:documentation>

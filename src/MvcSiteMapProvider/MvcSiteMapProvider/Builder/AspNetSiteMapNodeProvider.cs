@@ -107,6 +107,7 @@ namespace MvcSiteMapProvider.Builder
             var nodeParentMap = helper.CreateNode(key, parentNode.Key, SourceName, implicitResourceKey);
             var siteMapNode = nodeParentMap.Node;
 
+            siteMapNode.Site = node.GetAttributeValue("site");
             siteMapNode.Title = node.Title;
             siteMapNode.Description = node.Description;
             if (this.reflectAttributes)

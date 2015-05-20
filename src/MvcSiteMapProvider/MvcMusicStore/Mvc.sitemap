@@ -10,7 +10,7 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
   -->
 
-  <mvcSiteMapNode title="$resources:SiteMapLocalizations,HomeTitle" description="This is the home page" controller="Home" action="Index" key="Index" changeFrequency="Always" updatePriority="Normal" lastModifiedDate="2002-05-30T09:00:00" url="/ff’bb" metaRobotsValues="noodp">
+  <mvcSiteMapNode site="THE STORE!" title="$resources:SiteMapLocalizations,HomeTitle" description="This is the home page" controller="Home" action="Index" key="Index" changeFrequency="Always" updatePriority="Normal" lastModifiedDate="2002-05-30T09:00:00" url="/" metaRobotsValues="noodp">
 		<mvcSiteMapNode title="$resources:SiteMapLocalizations,BrowseGenresTitle" controller="Store" action="Index" canonicalUrlSeo="/lololol">
 			<mvcSiteMapNode title="Jazz 4" action="Browse" controller="Store" id="Jazz" someOtherParameter="whatever2" canonicalKey="ABC123"/>
 			<mvcSiteMapNode title="Browse" action="Browse" dynamicNodeProvider="MvcMusicStore.Code.StoreBrowseDynamicNodeProvider, Mvc Music Store" preservedRouteParameters="browse">
@@ -30,7 +30,7 @@
 
     <mvcSiteMapNode key="Checkout" title="$resources:SiteMapLocalizations,CheckoutTitle" controller="Checkout" clickable="false" />
 
-    <mvcSiteMapNode title="$resources:SiteMapLocalizations,AccountTitle" controller="Account" clickable="false">
+    <mvcSiteMapNode site="Secure Site!" title="$resources:SiteMapLocalizations,AccountTitle" controller="Account" clickable="false">
       <mvcSiteMapNode title="$resources:SiteMapLocalizations,LogOnTitle" action="LogOn" visibilityProvider="MvcMusicStore.Code.NonAuthenticatedVisibilityProvider, Mvc Music Store" />
       <mvcSiteMapNode title="$resources:SiteMapLocalizations,LogOffTitle" action="LogOff" visibilityProvider="MvcMusicStore.Code.AuthenticatedVisibilityProvider, Mvc Music Store" />
       <mvcSiteMapNode title="$resources:SiteMapLocalizations,RegisterTitle" action="Register" visibilityProvider="MvcMusicStore.Code.NonAuthenticatedVisibilityProvider, Mvc Music Store" />

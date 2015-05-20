@@ -41,6 +41,14 @@ namespace MvcSiteMapProvider
         // NOTE: Resource key is missing
 
         /// <summary>
+        /// Gets or sets the site (optional).
+        /// </summary>
+        /// <value>
+        /// The site.
+        /// </value>
+        public virtual string Site { get; set; }
+
+        /// <summary>
         /// Gets or sets the title (optional).
         /// </summary>
         /// <value>The title.</value>
@@ -270,6 +278,8 @@ namespace MvcSiteMapProvider
                 node.Order = (int)this.Order;
             if (!string.IsNullOrEmpty(this.HttpMethod))
                 node.HttpMethod = this.HttpMethod;
+            if (!string.IsNullOrEmpty(this.Site))
+                node.Site = this.Site;
             if (!string.IsNullOrEmpty(this.Title))
                 node.Title = this.Title;
             if (!string.IsNullOrEmpty(this.Description))

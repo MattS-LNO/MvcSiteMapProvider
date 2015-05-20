@@ -8,7 +8,7 @@
         <%=Html.MvcSiteMap().CanonicalTag()%>
         <%=Html.MvcSiteMap().MetaRobotsTag()%>
         <%=Html.MvcSiteMap().SiteMapDescriptionTag()%>
-        <%--<%=Html.MvcSiteMap().SiteMapTitleTag() %>--%>
+        <%=Html.MvcSiteMap().SiteMapTitleTag() %>
         <title>
             <asp:ContentPlaceHolder ID="TitleContent" runat="server" /> (<%=Html.MvcSiteMap().SiteMapTitle() %>)
         </title>

@@ -52,6 +52,11 @@ namespace MvcSiteMapProvider
         public string ResourceKey { get; set; }
 
         /// <summary>
+        /// SiteMap site.
+        /// </summary>
+        public string Site { get; set; }
+
+        /// <summary>
         /// SiteMap node title
         /// </summary>
         public string Title { get; set; }

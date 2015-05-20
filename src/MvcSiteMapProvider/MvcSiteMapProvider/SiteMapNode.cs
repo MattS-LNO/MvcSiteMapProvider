@@ -77,6 +77,7 @@ namespace MvcSiteMapProvider
         protected readonly string key;
         protected readonly bool isDynamic;
         protected string httpMethod = HttpVerbs.Get.ToString().ToUpperInvariant();
+        protected string site = string.Empty;
         protected string title = string.Empty;
         protected string description = string.Empty;
         protected string imageUrl = string.Empty;
@@ -150,6 +151,18 @@ namespace MvcSiteMapProvider
         public override string ResourceKey
         {
             get { return this.localizationService.ResourceKey; }
+        }
+
+        /// <summary>
+        /// Gets or sets the site.
+        /// </summary>
+        /// <value>
+        /// The site.
+        /// </value>
+        public override string Site
+        {
+            get { return localizationService.GetResourceString("site", this.site, this.SiteMap); }
+            set { this.site = localizationService.ExtractExplicitResourceKey("site", value); }
         }
 
         /// <summary>
@@ -918,6 +931,7 @@ namespace MvcSiteMapProvider
             foreach (var child in this.ChildNodes)
                 node.ChildNodes.Add(child);
             node.HttpMethod = this.HttpMethod;
+            node.Site = this.Site;
             node.Title = this.title; // Get protected member
             node.Description = this.description; // Get protected member
             node.TargetFrame = this.TargetFrame;

@@ -47,6 +47,11 @@ namespace MvcSiteMapProvider.Web.Html.Models
             Area = node.Area;
             Controller = node.Controller;
             Action = node.Action;
+            Site = node.Site;
+            if (string.IsNullOrEmpty(node.Site))
+            {
+                Site = node.RootNode.Site;
+            }
             Title = node.Title;
             Description = node.Description;
             TargetFrame = node.TargetFrame;
@@ -127,6 +132,14 @@ namespace MvcSiteMapProvider.Web.Html.Models
         /// </summary>
         /// <value>The content value of the meta robots tag.</value>
         public string MetaRobotsContent { get; protected set; }
+
+        /// <summary>
+        /// Gets or sets the site.
+        /// </summary>
+        /// <value>
+        /// The site.
+        /// </value>
+        public string Site { get; protected set; }
 
         /// <summary>
         /// Gets or sets the title.

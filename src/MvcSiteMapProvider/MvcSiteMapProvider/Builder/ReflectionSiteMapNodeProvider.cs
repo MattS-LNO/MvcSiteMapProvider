@@ -236,6 +236,7 @@ namespace MvcSiteMapProvider.Builder
             var node = nodeParentMap.Node;
 
             // Assign defaults
+            node.Site = attribute.Site;
             node.Title = title;
             node.Description = attribute.Description;
             node.Attributes.AddRange(attribute.Attributes, false);

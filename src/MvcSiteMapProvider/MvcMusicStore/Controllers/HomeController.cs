@@ -35,20 +35,22 @@ namespace MvcMusicStore.Controllers
 
         [MvcSiteMapNode(IsVideo = true, Key = "NewPage", ParentKey = "Index", CanonicalUrlSeo = "/new-page", ChangeFrequency = ChangeFrequency.Monthly, UpdatePriority = UpdatePriority.Critical,
             Title = "New Video Page", Description = "A description about New Video Page.",
-            ContentLocationUrl = "http://html5.learnnowonline.com/T/SRCC/SRC2.MP4", ExpirationDate = "2017-02-01T23:59:59-06:00", FamilyFriendly = true, GalleryLocation = "http://www.learnnowonline.com/courses",
-            GalleryTitle = "LearnNowOnline", ImageUrl = "http://ca1.learnnowonline.com/content/images/thumbnails/src2.png", LastModifiedDate = "2014-12-01T11:59:59-06:00", PlayerAllowEmbed = true,
-            PlayerLocationUrl = "http://html5.learnnowonline.com/T/SRCC/SRC2.MP4", RequiresSubscription = true, VideoLive = true, VideoRating = 4.2,
-            VideoUploader = "Learn Now, Inc.", VideoUploaderUrl = "http://www.learnnowonline.com/company", ViewCount = 123456,
-            VideoDuration = 98
+            ContentLocationUrl = "http://html5.somewhere.com/video.MP4", ExpirationDate = "2017-02-01T23:59:59-06:00", FamilyFriendly = true, GalleryLocation = "http://www.somewhere.com/gallery",
+            GalleryTitle = "Video Gallery", ImageUrl = "http://img.somewhere.com/thumbnail.png", LastModifiedDate = "2014-12-01T11:59:59-06:00", PlayerAllowEmbed = true,
+            PlayerLocationUrl = "http://html5.somewhere.com/video.MP4", RequiresSubscription = true, VideoLive = true, VideoRating = 4.2,
+            VideoUploader = "Vids, LLC", VideoUploaderUrl = "http://www.somewhere.com/company", ViewCount = 123456,
+            VideoDuration = 98,
+            Site = "The One and Only Music Store"
             )]
         public ActionResult NewPage()
         {
             return RedirectToAction("Index");
         }
 
+        //[MvcSiteMapNode(Title = "SiteMap!", ParentKey = "Index", Key = "SiteMap")]
         public ActionResult SiteMap()
         {
-            return View();
+            return View("~/Views/Home/SiteMap.aspx");
         }
     }
 }

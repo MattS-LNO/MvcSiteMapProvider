@@ -48,6 +48,7 @@ namespace MvcSiteMapProvider
         public abstract int Order { get; set; }
         public abstract string HttpMethod { get; set; }
         public abstract string ResourceKey { get; }
+        public abstract string Site { get; set; }
         public abstract string Title { get; set; }
         public abstract string Description { get; set; }
         public abstract string TargetFrame { get; set; }

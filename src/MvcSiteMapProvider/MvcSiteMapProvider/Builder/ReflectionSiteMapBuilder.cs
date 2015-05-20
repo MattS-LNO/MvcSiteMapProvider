@@ -439,6 +439,7 @@ namespace MvcSiteMapProvider.Builder
             var siteMapNode = siteMapNodeFactory.Create(siteMap, key, implicitResourceKey);
 
             // Assign defaults
+            siteMapNode.Site = attribute.Site;
             siteMapNode.Title = title;
             siteMapNode.Description = attribute.Description;
             siteMapNode.Attributes.AddRange(attribute.Attributes, false);

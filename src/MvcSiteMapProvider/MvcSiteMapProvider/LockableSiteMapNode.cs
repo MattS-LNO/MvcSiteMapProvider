@@ -65,6 +65,22 @@ namespace MvcSiteMapProvider
         }
 
         /// <summary>
+        /// Gets or sets the site (optional).
+        /// </summary>
+        /// <value>
+        /// The site.
+        /// </value>
+        public override string Site
+        {
+            get { return base.Site; }
+            set
+            {
+                this.ThrowIfReadOnly("Site");
+                base.Site = value;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the title (optional).
         /// </summary>
         /// <value>The title.</value>

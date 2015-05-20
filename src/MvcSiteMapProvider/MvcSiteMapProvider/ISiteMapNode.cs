@@ -34,6 +34,7 @@ namespace MvcSiteMapProvider
         bool IsAccessibleToUser();
         string HttpMethod { get; set; }
         string ResourceKey { get; }
+        string Site { get; set; }
         string Title { get; set; }
         string Description { get; set; }
         string TargetFrame { get; set; }
