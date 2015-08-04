@@ -92,6 +92,7 @@ namespace MvcSiteMapProvider
         string CanonicalUrlHostName { get; set; }
 
         IMetaRobotsValueCollection MetaRobotsValues { get; }
+        bool Include { get; set; }
         string GetMetaRobotsContentString();
         bool HasNoIndexAndNoFollow { get; }
 

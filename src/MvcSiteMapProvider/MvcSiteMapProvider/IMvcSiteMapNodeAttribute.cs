@@ -219,6 +219,8 @@ namespace MvcSiteMapProvider
         /// <value>The robots meta values.</value>
         string[] MetaRobotsValues { get; set; }
 
+        bool Include { get; set; }
+
         /// <summary>
         /// SiteMap node route (auto-detected by default)
         /// </summary>

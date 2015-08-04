@@ -314,6 +314,8 @@ namespace MvcSiteMapProvider.Tests.Unit.Web.Html
             get { throw new NotImplementedException(); }
         }
 
+        public bool Include { get; set; }
+
         public string Route { get; set; }
 
         public IRouteValueDictionary RouteValues

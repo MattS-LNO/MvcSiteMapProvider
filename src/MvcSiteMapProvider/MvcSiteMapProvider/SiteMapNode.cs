@@ -724,6 +724,12 @@ namespace MvcSiteMapProvider
             get { return this.MetaRobotsValues.HasNoIndexAndNoFollow; }
         }
 
+        public override bool Include
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Route

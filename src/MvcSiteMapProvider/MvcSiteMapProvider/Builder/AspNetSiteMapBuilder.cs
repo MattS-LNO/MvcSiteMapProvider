@@ -141,6 +141,7 @@ namespace MvcSiteMapProvider.Builder
             siteMapNode.CanonicalUrlProtocol = node.GetAttributeValue("canonicalUrlProtocol");
             siteMapNode.CanonicalUrlHostName = node.GetAttributeValue("canonicalUrlHostName");
             siteMapNode.MetaRobotsValues.AddRange(node.GetAttributeValue("metaRobotsValues"), new[] { ' ' });
+            siteMapNode.Include = bool.Parse(node.GetAttributeValueOrFallback("include", "true")); ;
             siteMapNode.ChangeFrequency = (ChangeFrequency)Enum.Parse(typeof(ChangeFrequency), node.GetAttributeValueOrFallback("changeFrequency", "Undefined"));
             siteMapNode.UpdatePriority = (UpdatePriority)Enum.Parse(typeof(UpdatePriority), node.GetAttributeValueOrFallback("updatePriority", "Undefined"));
             siteMapNode.LastModifiedDate = DateTime.Parse(node.GetAttributeValueOrFallback("lastModifiedDate", DateTime.MinValue.ToString()));

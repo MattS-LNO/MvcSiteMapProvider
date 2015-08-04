@@ -231,6 +231,8 @@ namespace MvcSiteMapProvider
         /// <value>The robots meta values.</value>
         public virtual IList<string> MetaRobotsValues { get; set; }
 
+        public virtual bool? Include { get; set; }
+
         /// <summary>
         /// Gets or sets the route.
         /// </summary>
@@ -388,6 +390,8 @@ namespace MvcSiteMapProvider
                     }
                 }
             }
+            if (this.Include != null)
+                node.Include = (bool)this.Include;
             if (!string.IsNullOrEmpty(this.Route))
                 node.Route = this.Route;
             foreach (var kvp in this.RouteValues)

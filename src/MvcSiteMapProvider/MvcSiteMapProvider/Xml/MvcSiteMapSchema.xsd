@@ -346,11 +346,19 @@
       </xs:annotation>
     </xs:attribute>
     
-    <!-- Meta Robots Values -->
+    <!-- Meta Robots/Include Values -->
     <xs:attribute name="metaRobotsValues" type="metarobots_type" use="optional">
       <xs:annotation>
         <xs:documentation>
           Optional. A space-delimited list of values to apply to the robots meta tag. These will apply to all robots.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="include" type="small_boolean_type" use="optional" default="true">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Determines whether or not to include the node in the site map, or if this information is strictly
+          for use on the document.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

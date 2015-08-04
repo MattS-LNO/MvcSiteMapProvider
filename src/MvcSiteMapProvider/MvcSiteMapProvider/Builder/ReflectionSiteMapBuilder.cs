@@ -463,6 +463,7 @@ namespace MvcSiteMapProvider.Builder
             siteMapNode.CanonicalUrlProtocol = attribute.CanonicalUrlProtocol;
             siteMapNode.CanonicalUrlHostName = attribute.CanonicalUrlHostName;
             siteMapNode.MetaRobotsValues.AddRange(attribute.MetaRobotsValues);
+            siteMapNode.Include = attribute.Include;
             siteMapNode.LastModifiedDate = string.IsNullOrEmpty(attribute.LastModifiedDate) ? DateTime.MinValue : DateTime.Parse(attribute.LastModifiedDate, CultureInfo.InvariantCulture);
             siteMapNode.ExpirationDate = string.IsNullOrEmpty(attribute.ExpirationDate) ? DateTime.Today.AddYears(2) : DateTime.Parse(attribute.ExpirationDate, CultureInfo.InvariantCulture);
             siteMapNode.ChangeFrequency = attribute.ChangeFrequency;

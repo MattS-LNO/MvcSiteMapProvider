@@ -10,7 +10,7 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
   -->
 
-  <mvcSiteMapNode site="THE STORE!" title="$resources:SiteMapLocalizations,HomeTitle" description="This is the home page" controller="Home" action="Index" key="Index" changeFrequency="Always" updatePriority="Normal" lastModifiedDate="2002-05-30T09:00:00" url="/" metaRobotsValues="noodp">
+  <mvcSiteMapNode site="THE STORE!" title="$resources:SiteMapLocalizations,HomeTitle" description="This is the home page" controller="Home" action="Index" key="Index" changeFrequency="Always" updatePriority="Normal" lastModifiedDate="2002-05-30T09:00:00" url="/" metaRobotsValues="noodp noindex">
 		<mvcSiteMapNode title="$resources:SiteMapLocalizations,BrowseGenresTitle" controller="Store" action="Index" canonicalUrlSeo="/lololol">
 			<mvcSiteMapNode title="Jazz 4" action="Browse" controller="Store" id="Jazz" someOtherParameter="whatever2" canonicalKey="ABC123"/>
 			<mvcSiteMapNode title="Browse" action="Browse" dynamicNodeProvider="MvcMusicStore.Code.StoreBrowseDynamicNodeProvider, Mvc Music Store" preservedRouteParameters="browse">
@@ -26,7 +26,7 @@
     </mvcSiteMapNode>
 		
 
-    <mvcSiteMapNode title="$resources:SiteMapLocalizations,ReviewCartTitle" controller="ShoppingCart" action="Index" />
+    <mvcSiteMapNode include="true" title="$resources:SiteMapLocalizations,ReviewCartTitle" controller="ShoppingCart" action="Index" />
 
     <mvcSiteMapNode key="Checkout" title="$resources:SiteMapLocalizations,CheckoutTitle" controller="Checkout" clickable="false" />
 
@@ -48,6 +48,6 @@
       </mvcSiteMapNode>
     </mvcSiteMapNode>
 
-    <mvcSiteMapNode title="$resources:SiteMapLocalizations,SitemapTitle" action="SiteMap" urlResolver="MvcMusicStore.Code.UpperCaseSiteMapNodeUrlResolver, Mvc Music Store" />
+    <mvcSiteMapNode include="false" title="$resources:SiteMapLocalizations,SitemapTitle" action="SiteMap" urlResolver="MvcMusicStore.Code.UpperCaseSiteMapNodeUrlResolver, Mvc Music Store" />
   </mvcSiteMapNode>
 </mvcSiteMap>

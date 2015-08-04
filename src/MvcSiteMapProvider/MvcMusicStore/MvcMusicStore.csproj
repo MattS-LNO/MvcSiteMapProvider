@@ -361,6 +361,12 @@ configured in the compilation constants -->
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
