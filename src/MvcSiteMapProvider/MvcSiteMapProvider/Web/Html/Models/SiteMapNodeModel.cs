@@ -61,6 +61,8 @@ namespace MvcSiteMapProvider.Web.Html.Models
             CanonicalUrl = node.CanonicalUrl;
             CanonicalUrlSeo = node.CanonicalUrlSeo;
             MetaRobotsContent = node.GetMetaRobotsContentString();
+            Include = node.Include;
+            Exclude = node.Exclude;
             IsCurrentNode = (node.Equals(node.SiteMap.CurrentNode));
             IsInCurrentPath = node.IsInCurrentPath();
             IsRootNode = (node.Equals(node.SiteMap.RootNode));
@@ -132,6 +134,10 @@ namespace MvcSiteMapProvider.Web.Html.Models
         /// </summary>
         /// <value>The content value of the meta robots tag.</value>
         public string MetaRobotsContent { get; protected set; }
+
+        public bool Include { get; protected set; }
+
+        public bool Exclude { get; protected set; }
 
         /// <summary>
         /// Gets or sets the site.

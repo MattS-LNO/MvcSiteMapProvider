@@ -730,6 +730,12 @@ namespace MvcSiteMapProvider
             set;
         }
 
+        public override bool Exclude
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Route
@@ -979,6 +985,8 @@ namespace MvcSiteMapProvider
             node.CanonicalUrlProtocol = this.CanonicalUrlProtocol;
             node.CanonicalUrlHostName = this.CanonicalUrlHostName;
             this.MetaRobotsValues.CopyTo(node.MetaRobotsValues);
+            node.Include = this.Include;
+            node.Exclude = this.Exclude;
             node.DynamicNodeProvider = this.DynamicNodeProvider;
             node.Route = this.Route;
             this.RouteValues.CopyTo(node.RouteValues);

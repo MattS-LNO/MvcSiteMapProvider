@@ -100,6 +100,7 @@ namespace MvcSiteMapProvider
         public abstract string CanonicalUrlHostName { get; set; }
         public abstract IMetaRobotsValueCollection MetaRobotsValues { get; }
         public abstract bool Include { get; set; }
+        public abstract bool Exclude { get; set; }
         public abstract string GetMetaRobotsContentString();
         public abstract bool HasNoIndexAndNoFollow { get; }
         public abstract string Route { get; set; }

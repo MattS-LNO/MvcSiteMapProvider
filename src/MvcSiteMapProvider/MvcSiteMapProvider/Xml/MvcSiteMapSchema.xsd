@@ -362,6 +362,14 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="exclude" type="small_boolean_type" use="optional" default="true">
+      <xs:annotation>
+        <xs:documentation>
+          Optional. Determines whether or not to include the node in the site map, or if this information is strictly
+          for use on the document.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     
     <!-- Route -->
 		<xs:attribute name="route" type="xs:string" use="optional">

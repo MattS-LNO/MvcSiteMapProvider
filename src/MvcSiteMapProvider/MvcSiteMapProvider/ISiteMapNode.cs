@@ -93,6 +93,7 @@ namespace MvcSiteMapProvider
 
         IMetaRobotsValueCollection MetaRobotsValues { get; }
         bool Include { get; set; }
+        bool Exclude { get; set; }
         string GetMetaRobotsContentString();
         bool HasNoIndexAndNoFollow { get; }
 

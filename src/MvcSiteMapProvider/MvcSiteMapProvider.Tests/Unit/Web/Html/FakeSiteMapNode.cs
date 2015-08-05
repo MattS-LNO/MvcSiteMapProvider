@@ -316,6 +316,8 @@ namespace MvcSiteMapProvider.Tests.Unit.Web.Html
 
         public bool Include { get; set; }
 
+        public bool Exclude { get; set; }
+
         public string Route { get; set; }
 
         public IRouteValueDictionary RouteValues

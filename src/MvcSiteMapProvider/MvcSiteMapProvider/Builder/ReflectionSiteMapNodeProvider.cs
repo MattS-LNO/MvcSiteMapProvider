@@ -261,6 +261,7 @@ namespace MvcSiteMapProvider.Builder
             node.CanonicalUrlHostName = attribute.CanonicalUrlHostName;
             node.MetaRobotsValues.AddRange(attribute.MetaRobotsValues);
             node.Include = attribute.Include;
+            node.Exclude = attribute.Exclude;
             node.LastModifiedDate = string.IsNullOrEmpty(attribute.LastModifiedDate) ? DateTime.MinValue : DateTime.Parse(attribute.LastModifiedDate);
             node.ExpirationDate = string.IsNullOrEmpty(attribute.ExpirationDate) ? DateTime.Today.AddYears(2) : DateTime.Parse(attribute.ExpirationDate);
             node.ChangeFrequency = attribute.ChangeFrequency;

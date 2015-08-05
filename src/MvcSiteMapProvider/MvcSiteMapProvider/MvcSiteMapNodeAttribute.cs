@@ -240,6 +240,8 @@ namespace MvcSiteMapProvider
 
         public bool Include { get; set; }
 
+        public bool Exclude { get; set; }
+
         /// <summary>
         /// SiteMap node route (auto-detected by default)
         /// </summary>

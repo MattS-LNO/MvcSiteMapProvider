@@ -94,6 +94,7 @@ namespace MvcSiteMapProvider.Builder
                 || attributeName == "canonicalUrlHostName"
                 || attributeName == "metaRobotsValues"
                 || attributeName == "include"
+                || attributeName == "exclude"
                 || attributeName == "route"
                 || attributeName == "inheritedRouteParameters"
                 || attributeName == "preservedRouteParameters";    

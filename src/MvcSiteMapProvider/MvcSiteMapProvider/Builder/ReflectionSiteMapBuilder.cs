@@ -464,6 +464,7 @@ namespace MvcSiteMapProvider.Builder
             siteMapNode.CanonicalUrlHostName = attribute.CanonicalUrlHostName;
             siteMapNode.MetaRobotsValues.AddRange(attribute.MetaRobotsValues);
             siteMapNode.Include = attribute.Include;
+            siteMapNode.Exclude = attribute.Exclude;
             siteMapNode.LastModifiedDate = string.IsNullOrEmpty(attribute.LastModifiedDate) ? DateTime.MinValue : DateTime.Parse(attribute.LastModifiedDate, CultureInfo.InvariantCulture);
             siteMapNode.ExpirationDate = string.IsNullOrEmpty(attribute.ExpirationDate) ? DateTime.Today.AddYears(2) : DateTime.Parse(attribute.ExpirationDate, CultureInfo.InvariantCulture);
             siteMapNode.ChangeFrequency = attribute.ChangeFrequency;

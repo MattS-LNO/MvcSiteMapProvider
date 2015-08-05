@@ -377,7 +377,7 @@ namespace MvcSiteMapProvider.Web.Mvc
                 }
 
                 // Return
-                if (siteMapNode.Include)
+                if (!siteMapNode.Exclude)
                 {
                     yield return urlElement;
                 }

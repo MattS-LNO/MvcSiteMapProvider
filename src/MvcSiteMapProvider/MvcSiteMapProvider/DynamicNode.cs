@@ -233,6 +233,8 @@ namespace MvcSiteMapProvider
 
         public virtual bool? Include { get; set; }
 
+        public virtual bool? Exclude { get; set; }
+
         /// <summary>
         /// Gets or sets the route.
         /// </summary>
@@ -392,6 +394,8 @@ namespace MvcSiteMapProvider
             }
             if (this.Include != null)
                 node.Include = (bool)this.Include;
+            if (this.Exclude != null)
+                node.Exclude = (bool)this.Exclude;
             if (!string.IsNullOrEmpty(this.Route))
                 node.Route = this.Route;
             foreach (var kvp in this.RouteValues)
@@ -426,6 +430,8 @@ namespace MvcSiteMapProvider
             PreservedRouteParameters = new List<string>();
             Roles = new List<string>();
             MetaRobotsValues = new List<string>();
+            Include = true;
+            Exclude = false;
         }
 
         /// <summary>
@@ -436,6 +442,8 @@ namespace MvcSiteMapProvider
         public DynamicNode(string key, string title)
             : this(key, null, title, "")
         {
+            Include = true;
+            Exclude = false;
         }
 
         /// <summary>
@@ -452,6 +460,8 @@ namespace MvcSiteMapProvider
             ParentKey = parentKey;
             Title = title;
             Description = description;
+            Include = true;
+            Exclude = false;
         }
 
         /// <summary>
@@ -466,6 +476,8 @@ namespace MvcSiteMapProvider
         public DynamicNode(string key, string parentKey, string title, string description, string controller, string action)
             : this(key, parentKey, title, description, null, controller, action)
         {
+            Include = true;
+            Exclude = false;
         }
 
         /// <summary>
@@ -479,6 +491,8 @@ namespace MvcSiteMapProvider
         public DynamicNode(string key, string parentKey, string title, string description, string action)
             : this(key, parentKey, title, description, null, null, action)
         {
+            Include = true;
+            Exclude = false;
         }
 
         /// <summary>
@@ -497,6 +511,8 @@ namespace MvcSiteMapProvider
             Area = area;
             Controller = controller;
             Action = action;
+            Include = true;
+            Exclude = false;
         }
     }
 }

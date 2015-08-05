@@ -221,6 +221,8 @@ namespace MvcSiteMapProvider
 
         bool Include { get; set; }
 
+        bool Exclude { get; set; }
+
         /// <summary>
         /// SiteMap node route (auto-detected by default)
         /// </summary>
