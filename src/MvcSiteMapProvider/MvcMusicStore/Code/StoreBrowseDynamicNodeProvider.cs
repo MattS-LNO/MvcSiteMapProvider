@@ -29,6 +29,7 @@ namespace MvcMusicStore.Code
             {
                 DynamicNode dynamicNode = new DynamicNode("Genre_" + genre.Name, genre.Name);
                 dynamicNode.RouteValues.Add("genre", genre.Name);
+                dynamicNode.Include = true;
 
                 yield return dynamicNode; 
             }
